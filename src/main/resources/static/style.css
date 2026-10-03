@@ -1,0 +1,192 @@
+/* ---------- Colors (change these to re-theme the whole page) ---------- */
+:root {
+  --page: #fff7fa;
+  --ink: #4b4560;
+  --muted: #7d7692;
+  --white: #ffffff;
+  --button: #cbb8f0;
+  --button-hover: #bba4ea;
+  --error-bg: #fde1e1;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+#today-text {
+  margin: 4px 0 24px;
+  color: var(--muted);
+}
+
+/* ---------- Add form ---------- */
+#add-form {
+  display: flex;
+  gap: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 16px;
+  border: 2px solid #eadff7;
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+#add-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 14px;
+  background: var(--button);
+  color: var(--ink);
+  font-weight: 800;
+}
+#add-form button:hover { background: var(--button-hover); }
+
+:focus-visible {
+  outline: 3px solid #8f7bd1;
+  outline-offset: 2px;
+}
+
+#message {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--error-bg);
+}
+
+.hint {
+  margin: 20px 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Habit cards ---------- */
+.card {
+  margin-bottom: 14px;
+  padding: 18px 18px 14px;
+  border-radius: 20px;
+  background: var(--bg);
+}
+
+/* Each card gets one of these colors (bg = card, accent = ticked circle). */
+.c0 { --bg: #ede4fa; --accent: #b9a2e6; }  /* lavender */
+.c1 { --bg: #ddf3ea; --accent: #8fd4b8; }  /* mint */
+.c2 { --bg: #ffe6d6; --accent: #f5b38c; }  /* peach */
+.c3 { --bg: #dcebfb; --accent: #8dbdf0; }  /* sky */
+.c4 { --bg: #fff4cc; --accent: #ebcb5c; }  /* butter */
+.c5 { --bg: #fde1ea; --accent: #f0a0bc; }  /* pink */
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.streak {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.delete {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.delete:hover { background: var(--white); color: var(--ink); }
+
+/* ---------- The 7-day row ---------- */
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.circle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  font-weight: 800;
+  transition: background 0.15s;
+}
+
+.day.done .circle { background: var(--accent); }
+.day:hover .circle { background: var(--white); }
+.day.done:hover .circle { background: var(--accent); }
+.day.today .label { color: var(--ink); font-weight: 800; }
+.day.today .circle { box-shadow: 0 0 0 3px var(--accent); }
+
+/* ---------- Empty state ---------- */
+.empty {
+  padding: 28px 20px;
+  border-radius: 20px;
+  background: #f3edfb;
+  text-align: center;
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circle { transition: none; }
+}
